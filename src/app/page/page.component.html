@@ -1,0 +1,717 @@
+<!-- Navbar Start -->
+<div class="container-fluid nav-bar bg-transparent">
+    <nav class="navbar navbar-expand-lg bg-white navbar-light py-0 px-4">
+        <a href="index.html" class="navbar-brand d-flex align-items-center text-center">
+            <div class="icon p-2 me-2">
+                <img class="img-fluid" src="assets/img/icon-deal.png" alt="Icon" style="width: 30px; height: 30px;">
+            </div>
+            <h1 class="m-0 text-primary">Dari_Tn</h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto">
+                <a href="index.html" class="nav-item nav-link active">Home</a>
+                <a href="about.html" class="nav-item nav-link">About</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Property</a>
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="property-list.html" class="dropdown-item">Property List</a>
+                        <a href="property-type.html" class="dropdown-item">Property Type</a>
+                        <a href="property-agent.html" class="dropdown-item">Property Agent</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                        <a href="404.html" class="dropdown-item">404 Error</a>
+                    </div>
+                </div>
+                <a href="contact.html" class="nav-item nav-link">Contact</a>
+            </div>
+            <a class="btn btn-primary px-3 d-none d-lg-flex" (click)="frame.show()"  >Create announcement</a>
+            <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <form [formGroup]="addSubForm" (ngSubmit)="addSub(addSubForm.value)" >
+                <div class="modal-header text-center">
+                  <h4 class="modal-title w-100 font-weight-bold">Add Subscription</h4>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body mx-3">
+                  <div class="md-form mb-5">
+                    <mdb-icon fas icon="home" class="prefix grey-text"></mdb-icon><label for="title">Title</label><span class="required">*</span>
+                    <input type="text" id="title" formControlName="title" class="form-control"
+                      mdbInput mdbValidate>
+                    
+                    <mat-error *ngFor="let validation of validation_messages.title">
+                        <mat-error class="error-message" style="color: red;" *ngIf="addSubForm.get('title').hasError(validation.type) && (addSubForm.get('title').dirty || addSubForm.get('title').touched)">{{validation.message}}</mat-error>
+                      </mat-error>
+                  </div>
+                  <div class="md-form mb-4">
+                    <mdb-icon fas icon="pencil-alt" class="prefix grey-text"></mdb-icon> <label for="description">Description</label><span class="required">*</span>
+                    <input type="text" id="description " formControlName="description" 
+                      class="form-control" mdbInput mdbValidate>
+                    <mat-error *ngFor="let validation of validation_messages.description">
+                        <mat-error class="error-message" style="color: red;" *ngIf="addSubForm.get('description').hasError(validation.type) && (addSubForm.get('description').dirty || addSubForm.get('description').touched)">{{validation.message}}</mat-error>
+                      </mat-error>
+                  </div>
+                  <div class="md-form mb-4">
+                    <mdb-icon fas icon="cash-register" class="prefix grey-text"></mdb-icon><label for="price">Price</label><span class="required">*</span>
+                    <input type="number" ng-model="myDecimal" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01"  id="price" formControlName="price" 
+                      class="form-control" mdbInput mdbValidate>
+                      <mat-error *ngFor="let validation of validation_messages.price">
+                        <mat-error class="error-message" style="color: red;" *ngIf="addSubForm.get('price').hasError(validation.type) && (addSubForm.get('price').dirty || addSubForm.get('price').touched)">{{validation.message}}</mat-error>
+                      </mat-error>
+                </div>
+                <div class="md-form mb-4">
+                                        <!-- upload image -->
+                    <label>Upload image</label>
+                    <input class="form-control" formControlName="urLImg"
+                    type="file" (change)="onFileChanged($event)"
+                    #fileInput>
+                </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                  <button mdbBtn color="default" type="submit" (click)="frame.hide()" [disabled]="!addSubForm.valid" class="waves-light" mdbWavesEffect>ADD</button>
+                </div>
+              </form>
+              </div>
+            </div>
+          </div>
+          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  Modal body text goes here.
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </nav>
+</div>
+<!-- Navbar End -->
+
+
+
+
+<!-- Search Start -->
+<div class="container-fluid bg-primary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
+    <div class="container">
+        <div class="row g-2">
+            <div class="col-md-10">
+                <div class="row g-2">
+                    <div class="col-md-4">
+                        <input type="text" class="form-control border-0 py-3" placeholder="Search Keyword">
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-select border-0 py-3">
+                            <option selected>Property Type</option>
+                            <option value="1">Villa</option>
+                            <option value="2">Apartment</option>
+                            <option value="3">Piece-of-ground</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <select class="form-select border-0 py-3">
+                            <option selected>Location</option>
+                            <option value="1">Tunis</option>
+                            <option value="2">Ariana</option>
+                            <option value="3">Sfax</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-dark border-0 w-100 py-3">Search</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Search End -->
+
+
+
+<!-- Property List Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="row g-0 gx-5 align-items-end">
+            <div class="col-lg-6">
+                <div class="text-start mx-auto mb-5 wow slideInLeft" data-wow-delay="0.1s">
+                    <h1 class="mb-3">Property Listing</h1>
+                    <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit diam justo sed rebum.</p>
+                </div>
+            </div>
+            <div class="col-lg-6 text-start text-lg-end wow slideInRight" data-wow-delay="0.1s">
+                <ul class="nav nav-pills d-inline-flex justify-content-end mb-5">
+                    <li class="nav-item me-2">
+                        <a class="btn btn-outline-primary active" data-bs-toggle="pill" href="#tab-1">Featured</a>
+                    </li>
+                    <li class="nav-item me-2">
+                        <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-2">For Sell</a>
+                    </li>
+                    <li class="nav-item me-0">
+                        <a class="btn btn-outline-primary" data-bs-toggle="pill" href="#tab-3">For Rent</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-content" *ngIf="show" >
+            <div id="tab-1" class="tab-pane fade show p-0 active">
+                <div class="row g-4" *ngIf="isLoaded$ | async">
+                    <ng-template #content let-c="close" let-d="dismiss">
+                        <div class="modal-header">
+                          <h4 class="modal-title" id="modal-basic-title">Wanna buy this house !</h4>
+                          <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+                        </div>
+                        <div class="modal-body">
+                          <h5>TITLE :</h5>  <p>{{title}}</p>
+                          <h4>PRICE:</h4>  <p>{{price}}</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-dark" (click)="buySub()">BUY</button>
+                        </div>
+                      </ng-template>
+                      <ng-template #deleteC let-c="close" let-d="dismiss">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="modal-title">Delete property</h4>
+                          </div>
+                          <div class="modal-body">
+                            <p><strong>Are you sure you want to <span class="text-primary">delete</span> his property? </strong></p>
+                            <p>All information associated to this subscription will be permanently deleted.
+                            <span class="text-danger">This operation can not be undone.</span>
+                            </p>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-secondary" (click)="closeModal()">Cancel</button>
+                            <button type="button" class="btn btn-danger" (click)="deleteSub()">Ok</button>
+                          </div>
+                      </ng-template>
+                      <input type="text" [(ngModel)]="searchItem" placeholder="Search Property...">
+
+                    <div class="col-lg-4 col-md-6 wow fadeInUp " data-wow-delay="0.1s" *ngFor = "let sub of _subscriptions| myfilter: searchItem ">
+                        <div class="property-item rounded overflow-hidden" >
+                                <div class="position-relative overflow-hidden" title="Subscribe">
+                                    <a href="{{ '/subscribe/' + sub.idSub}}"><img class="img-fluid"  src="assets/img/property-4.jpg" alt=""></a>
+                                    <Button class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3" (click)="open(content, sub.title, sub.price, sub.idSub)" >Buy</Button>
+                                    <div class="bg-primary rounded text-white position-absolute start-0  float-right m-4 py-1 px-3">Subsribe</div>
+                                    <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Appartment</div>
+                                </div>
+                                <div class="p-4 pb-0">
+                                    <h5 class="text-primary mb-3">DT {{sub.price}}</h5>
+                                    <a class="d-block h5 mb-2" href="">{{sub.title}}</a>
+                                    <p><i class="fa fa-map-marker-alt text-primary me-2"></i>{{sub.description}}</p>
+                                </div>
+                                <div class="d-flex border-top">
+                                    <small class="flex-fill text-center py-2"><i (click)="openD(deleteC, sub.idSub)" class="fa fa-trash text-primary me-2"></i>Delete</small>
+                                </div>
+                        </div>
+                       
+                    </div>
+                    
+                    <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <a class="btn btn-primary py-3 px-5" (click)="loadMore()">Browse More Property</a>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-2" class="tab-pane fade show p-0">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="property-item rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <a href=""><img class="img-fluid" src="assets/img/property-1.jpg" alt=""></a>
+                                <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">For Sell</div>
+                                <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Appartment</div>
+                            </div>
+                            <div class="p-4 pb-0">
+                                <h5 class="text-primary mb-3">$12,345</h5>
+                                <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</p>
+                            </div>
+                            <div class="d-flex border-top">
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="property-item rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <a href=""><img class="img-fluid" src="assets/img/property-2.jpg" alt=""></a>
+                                <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">For Rent</div>
+                                <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Villa</div>
+                            </div>
+                            <div class="p-4 pb-0">
+                                <h5 class="text-primary mb-3">$12,345</h5>
+                                <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</p>
+                            </div>
+                            <div class="d-flex border-top">
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="property-item rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <a href=""><img class="img-fluid" src="assets/img/property-3.jpg" alt=""></a>
+                                <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">For Sell</div>
+                                <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Office</div>
+                            </div>
+                            <div class="p-4 pb-0">
+                                <h5 class="text-primary mb-3">$12,345</h5>
+                                <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</p>
+                            </div>
+                            <div class="d-flex border-top">
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="property-item rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <a href=""><img class="img-fluid" src="assets/img/property-4.jpg" alt=""></a>
+                                <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">For Rent</div>
+                                <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Building</div>
+                            </div>
+                            <div class="p-4 pb-0">
+                                <h5 class="text-primary mb-3">$12,345</h5>
+                                <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</p>
+                            </div>
+                            <div class="d-flex border-top">
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="property-item rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <a href=""><img class="img-fluid" src="assets/img/property-5.jpg" alt=""></a>
+                                <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">For Sell</div>
+                                <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Home</div>
+                            </div>
+                            <div class="p-4 pb-0">
+                                <h5 class="text-primary mb-3">$12,345</h5>
+                                <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</p>
+                            </div>
+                            <div class="d-flex border-top">
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="property-item rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <a href=""><img class="img-fluid" src="assets/img/property-6.jpg" alt=""></a>
+                                <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">For Rent</div>
+                                <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Shop</div>
+                            </div>
+                            <div class="p-4 pb-0">
+                                <h5 class="text-primary mb-3">$12,345</h5>
+                                <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</p>
+                            </div>
+                            <div class="d-flex border-top">
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center">
+                        <a class="btn btn-primary py-3 px-5" href="">Browse More Property</a>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-3" class="tab-pane fade show p-0">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="property-item rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <a href=""><img class="img-fluid" src="assets/img/property-1.jpg" alt=""></a>
+                                <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">For Sell</div>
+                                <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Appartment</div>
+                            </div>
+                            <div class="p-4 pb-0">
+                                <h5 class="text-primary mb-3">$12,345</h5>
+                                <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</p>
+                            </div>
+                            <div class="d-flex border-top">
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="property-item rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <a href=""><img class="img-fluid" src="assets/img/property-2.jpg" alt=""></a>
+                                <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">For Rent</div>
+                                <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Villa</div>
+                            </div>
+                            <div class="p-4 pb-0">
+                                <h5 class="text-primary mb-3">$12,345</h5>
+                                <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</p>
+                            </div>
+                            <div class="d-flex border-top">
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="property-item rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <a href=""><img class="img-fluid" src="assets/img/property-3.jpg" alt=""></a>
+                                <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">For Sell</div>
+                                <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Office</div>
+                            </div>
+                            <div class="p-4 pb-0">
+                                <h5 class="text-primary mb-3">$12,345</h5>
+                                <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</p>
+                            </div>
+                            <div class="d-flex border-top">
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="property-item rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <a href=""><img class="img-fluid" src="assets/img/property-4.jpg" alt=""></a>
+                                <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">For Rent</div>
+                                <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Building</div>
+                            </div>
+                            <div class="p-4 pb-0">
+                                <h5 class="text-primary mb-3">$12,345</h5>
+                                <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</p>
+                            </div>
+                            <div class="d-flex border-top">
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="property-item rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <a href=""><img class="img-fluid" src="assets/img/property-5.jpg" alt=""></a>
+                                <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">For Sell</div>
+                                <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Home</div>
+                            </div>
+                            <div class="p-4 pb-0">
+                                <h5 class="text-primary mb-3">$12,345</h5>
+                                <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</p>
+                            </div>
+                            <div class="d-flex border-top">
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="property-item rounded overflow-hidden">
+                            <div class="position-relative overflow-hidden">
+                                <a href=""><img class="img-fluid" src="assets/img/property-6.jpg" alt=""></a>
+                                <div class="bg-primary rounded text-white position-absolute start-0 top-0 m-4 py-1 px-3">For Rent</div>
+                                <div class="bg-white rounded-top text-primary position-absolute start-0 bottom-0 mx-4 pt-1 px-3">Shop</div>
+                            </div>
+                            <div class="p-4 pb-0">
+                                <h5 class="text-primary mb-3">$12,345</h5>
+                                <a class="d-block h5 mb-2" href="">Golden Urban House For Sell</a>
+                                <p><i class="fa fa-map-marker-alt text-primary me-2"></i>123 Street, New York, USA</p>
+                            </div>
+                            <div class="d-flex border-top">
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-ruler-combined text-primary me-2"></i>1000 Sqft</small>
+                                <small class="flex-fill text-center border-end py-2"><i class="fa fa-bed text-primary me-2"></i>3 Bed</small>
+                                <small class="flex-fill text-center py-2"><i class="fa fa-bath text-primary me-2"></i>2 Bath</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 text-center">
+                        <a class="btn btn-primary py-3 px-5" href="">Browse More Property</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Property List End -->
+
+
+<!-- Call to Action Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="bg-light rounded p-3">
+            <div class="bg-white rounded p-4" style="border: 1px dashed rgba(0, 185, 142, .3)">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                        <img class="img-fluid rounded w-100" src="assets/img/call-to-action.jpg" alt="">
+                    </div>
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                        <div class="mb-4">
+                            <h1 class="mb-3">Contact With Our Certified Agent</h1>
+                            <p>Eirmod sed ipsum dolor sit rebum magna erat. Tempor lorem kasd vero ipsum sit sit diam justo sed vero dolor duo.</p>
+                        </div>
+                        <a href="" class="btn btn-primary py-3 px-4 me-2"><i class="fa fa-phone-alt me-2"></i>Make A Call</a>
+                        <a href="" class="btn btn-dark py-3 px-4"><i class="fa fa-calendar-alt me-2"></i>Get Appoinment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Call to Action End -->
+
+
+<!-- Team Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h1 class="mb-3">Property Agents</h1>
+            <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="team-item rounded overflow-hidden">
+                    <div class="position-relative">
+                        <img class="img-fluid" src="assets/img/team-1.jpg" alt="">
+                        <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center p-4 mt-3">
+                        <h5 class="fw-bold mb-0">Full Name</h5>
+                        <small>Designation</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="team-item rounded overflow-hidden">
+                    <div class="position-relative">
+                        <img class="img-fluid" src="assets/img/team-2.jpg" alt="">
+                        <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center p-4 mt-3">
+                        <h5 class="fw-bold mb-0">Full Name</h5>
+                        <small>Designation</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="team-item rounded overflow-hidden">
+                    <div class="position-relative">
+                        <img class="img-fluid" src="assets/img/team-3.jpg" alt="">
+                        <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center p-4 mt-3">
+                        <h5 class="fw-bold mb-0">Full Name</h5>
+                        <small>Designation</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
+                <div class="team-item rounded overflow-hidden">
+                    <div class="position-relative">
+                        <img class="img-fluid" src="assets/img/team-4.jpg" alt="">
+                        <div class="position-absolute start-50 top-100 translate-middle d-flex align-items-center">
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square mx-1" href=""><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center p-4 mt-3">
+                        <h5 class="fw-bold mb-0">Full Name</h5>
+                        <small>Designation</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Team End -->
+
+
+<!-- Testimonial Start -->
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <h1 class="mb-3">Our Clients Say!</h1>
+            <p>Eirmod sed ipsum dolor sit rebum labore magna erat. Tempor ut dolore lorem kasd vero ipsum sit eirmod sit. Ipsum diam justo sed rebum vero dolor duo.</p>
+        </div>
+        <div class="owl-carousel testimonial-carousel wow fadeInUp" data-wow-delay="0.1s">
+            <div class="testimonial-item bg-light rounded p-3">
+                <div class="bg-white border rounded p-4">
+                    <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
+                    <div class="d-flex align-items-center">
+                        <img class="img-fluid flex-shrink-0 rounded" src="assets/img/testimonial-1.jpg" style="width: 45px; height: 45px;">
+                        <div class="ps-3">
+                            <h6 class="fw-bold mb-1">Client Name</h6>
+                            <small>Profession</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-item bg-light rounded p-3">
+                <div class="bg-white border rounded p-4">
+                    <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
+                    <div class="d-flex align-items-center">
+                        <img class="img-fluid flex-shrink-0 rounded" src="assets/img/testimonial-2.jpg" style="width: 45px; height: 45px;">
+                        <div class="ps-3">
+                            <h6 class="fw-bold mb-1">Client Name</h6>
+                            <small>Profession</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-item bg-light rounded p-3">
+                <div class="bg-white border rounded p-4">
+                    <p>Tempor stet labore dolor clita stet diam amet ipsum dolor duo ipsum rebum stet dolor amet diam stet. Est stet ea lorem amet est kasd kasd erat eos</p>
+                    <div class="d-flex align-items-center">
+                        <img class="img-fluid flex-shrink-0 rounded" src="assets/img/testimonial-3.jpg" style="width: 45px; height: 45px;">
+                        <div class="ps-3">
+                            <h6 class="fw-bold mb-1">Client Name</h6>
+                            <small>Profession</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Testimonial End -->
+
+
+<!-- Footer Start -->
+<div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container py-5">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-white mb-4">Get In Touch</h5>
+                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
+                <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
+                <div class="d-flex pt-2">
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
+                    <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-white mb-4">Quick Links</h5>
+                <a class="btn btn-link text-white-50" href="">About Us</a>
+                <a class="btn btn-link text-white-50" href="">Contact Us</a>
+                <a class="btn btn-link text-white-50" href="">Our Services</a>
+                <a class="btn btn-link text-white-50" href="">Privacy Policy</a>
+                <a class="btn btn-link text-white-50" href="">Terms & Condition</a>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-white mb-4">Photo Gallery</h5>
+                <div class="row g-2 pt-2">
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="assets/img/property-1.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="assets/img/property-2.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="assets/img/property-3.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="assets/img/property-4.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="assets/img/property-5.jpg" alt="">
+                    </div>
+                    <div class="col-4">
+                        <img class="img-fluid rounded bg-light p-1" src="assets/img/property-6.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5 class="text-white mb-4">Newsletter</h5>
+                <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                <div class="position-relative mx-auto" style="max-width: 400px;">
+                    <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
+                    <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="copyright">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved. 
+                    
+                    <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="footer-menu">
+                        <a href="">Home</a>
+                        <a href="">Cookies</a>
+                        <a href="">Help</a>
+                        <a href="">FQAs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
+<!-- Footer End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
