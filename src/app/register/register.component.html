@@ -1,0 +1,90 @@
+<!-- Navbar Start -->
+<section class="banner pt-5" >
+<div class="container-fluid nav-bar  bg-white  ">
+    <nav class="navbar navbar-expand-lg bg-darkgrey navbar-light py-0 px-4">
+        <a href="index.html" class="navbar-brand d-flex align-items-center text-center">
+            <div class="icon p-2 me-2">
+                <img class="img-fluid" src="assets/img/icon-deal.png" alt="Icon" style="width: 30px; height: 30px;">
+            </div>
+            <h1 class="m-0 text-primary">Dari.Tn</h1>
+        </a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto">
+                <a href="index.html" class="nav-item nav-link active">Home</a>
+                <a href="about.html" class="nav-item nav-link">About</a>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Property</a>
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="property-list.html" class="dropdown-item">Property List</a>
+                        <a href="property-type.html" class="dropdown-item">Property Type</a>
+                        <a href="property-agent.html" class="dropdown-item">Property Agent</a>
+                    </div>
+                </div>
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <div class="dropdown-menu rounded-0 m-0">
+                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                        <a href="404.html" class="dropdown-item">404 Error</a>
+                    </div>
+                </div>
+                <a href="contact.html" class="nav-item nav-link">Contact</a>
+            </div>
+            <a href="" class="btn btn-primary px-3 d-none d-lg-flex">Sign In</a>
+        </div>
+    </nav>
+</div>
+<!-- Navbar End -->
+<div class="container">
+	<div class="row">
+		<div class="col-md-7">
+			<h1 class="display-5 animated fadeIn mb-4">Find A <span class="text-primary">Find A Perfect Home</span> To Live With Your Family</h1>
+	     </div>
+<div class="col-md-5">
+	<div class="row" >
+		
+		<div class="col-med-6" ng >
+			<h3 class="text-left"> Create your account </h3>
+		</div>
+		
+		<div class="col-md-6">
+<span class="glyphicon glyphicon-pencil"></span>
+		</div>
+		<form (ngSubmit)="userRegister()">
+		<div class="row">
+			<label class="label col-md-2 control-label">Name</label>
+			<div class="col-md-10">
+				<input type="username" class="form-control" name="username" placeholder="user name" [(ngModel)]="user.username">
+			</div>
+		</div>
+		<div class="row">
+			<label class="label col-md-2 control-label">E-mail</label>
+			<div class="col-md-10">
+				<input type="email" class="form-control" name="email" placeholder="E-mail" [(ngModel)]="user.email">
+			</div>
+		</div>
+		<div class="row">
+			<label class="label col-md-2 control-label">Password</label>
+			<div class="col-md-10">
+				<input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="user.password">
+				
+			</div>
+		</div>
+		<div class="row">
+			<label class="label col-md-2 control-label"> Phone</label>
+			<div class="col-md-10">
+				<input type="phone_number" class="form-control" name="phone_number" placeholder="Phone number" [(ngModel)]="user.phone_number">
+			</div>
+		</div>
+		<div ><button type="submit" class=" btn btn-info" >Register</button></div>
+		</form>
+	</div>
+
+		</div>
+	</div>
+	</div>
+
+</section>
+

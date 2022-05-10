@@ -1,0 +1,65 @@
+.banner{
+    background: url(https://www.residencestyle.com/wp-content/uploads/2020/06/1-7.jpeg)  center center fixed no-repeat;
+    background-size: cover;
+    height: 1200px;
+}
+
+h1{
+    font-size:  40px; 
+    color:white;
+    margin-top:   240px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+h3{
+    font-size: 25px;
+    color: white;
+}
+.glyphicon-pencil{
+    font-size: 35px;
+    color: white;
+    float: right;
+    margin-top: 20px;
+
+}
+
+.col-md-5{
+    margin-top: 80px;
+    box-shadow: -1px 1px 60px 10px black ;
+    background: rgba(0,0,0,0.5);
+
+}
+.label{
+    font-weight: normal;
+    margin-top: 15px;
+    color: white;
+    font-size: 18px ;
+}
+.form-control{
+    background: transparent;
+    border-radius: 0px;
+    border: 0px;
+    border-bottom: 1px solid white;
+    font-size: 18px ;
+    margin-top: 15px;
+    height: 40px;
+    color: white  ;
+}
+input[type="checkbox"]{
+    margin-top: 15px;
+    width: 15px;
+    height: 15px;
+}
+.small{
+    font-size: 10px;
+    color: white;
+
+}
+.btn-info{
+    margin-top: 20px;
+    font-size: 18px;
+    width: 120px;
+    margin-left: 80px;
+    margin-bottom: 20px;
+}
