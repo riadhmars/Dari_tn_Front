@@ -9,4 +9,15 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'Dari_tn';
+
+  user_id: any = 1;
+
+  constructor() {
+    //let token:any;
+    // localStorage.setItem('token', this.user_id);
+  }
+
+  auth(): void {
+    alert('I am connected');
+  }
 }

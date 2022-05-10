@@ -9,12 +9,15 @@ import { Announcement } from './announcement';
 export class AnnouncementService {
   readonly baseURL =
     'http://localhost:8090/DariTn/Announcementcontroller/Announcements';
+  readonly baseURLt =
+    'http://localhost:8090/DariTn/Announcementcontroller/incLikesad';
+
   constructor(private httpClient: HttpClient) {}
 
   getAnnouncementList(): Observable<Announcement[]> {
     return this.httpClient.get<Announcement[]>(this.baseURL);
   }
-  addAnnouncement(announcement: any): Observable<Object> {
+  addAnnouncement(announcement: Announcement): Observable<Object> {
     return this.httpClient.post<Announcement[]>(this.baseURL, announcement);
   }
 
@@ -26,6 +29,10 @@ export class AnnouncementService {
     announcement: Announcement
   ): Observable<Object> {
     return this.httpClient.put(`${this.baseURL}/${id_an}`, announcement);
+  }
+
+  Addlike(LikesNB: number, announcement: Announcement): Observable<Object> {
+    return this.httpClient.put(`${this.baseURLt}/${LikesNB}`, announcement);
   }
   /* id_an: number,
     announcement: Announcement

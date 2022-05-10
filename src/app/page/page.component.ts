@@ -17,6 +17,9 @@ export class PageComponent implements OnInit {
   imageName: any;
   retrievedImage: any;
 
+  LikesNB!: number;
+
+  announcement: Announcement = new Announcement();
   constructor(
     private announcementService: AnnouncementService,
     private router: Router,
@@ -82,7 +85,6 @@ export class PageComponent implements OnInit {
       this.announcements = data;
     });
   }
-
   announcementDetails(id_an: number) {
     this.router.navigate(['announcement-details', id_an]);
   }
@@ -90,6 +92,7 @@ export class PageComponent implements OnInit {
   updateAnnouncement(id_an: number) {
     this.router.navigate(['update-announcement', id_an]);
   }
+
   deleteAnnouncement(id_an: number) {
     this.announcementService.deleteAnnouncement(id_an).subscribe((data) => {
       console.log(data);
@@ -101,9 +104,7 @@ export class PageComponent implements OnInit {
     console.log(key);
     const results: Announcement[] = [];
     for (const announcement of this.announcements) {
-      if (
-        announcement.description.toLowerCase().indexOf(key.toLowerCase()) !== -1
-      ) {
+      if (announcement.object.toLowerCase().indexOf(key.toLowerCase()) !== -1) {
         results.push(announcement);
       }
     }

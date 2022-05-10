@@ -24,29 +24,57 @@
                   <div class="row">
                     <div class="col-md-6 mb-4">
                       <div class="form-outline">
-                        <h5>Governorate</h5>
+                        <h5>Object</h5>
                         <input
                           type="text"
-                          class="form-control form-control-lg"
+                          class="form-control"
                           id="form3Example1m"
-                          [(ngModel)]="announcement.governorate"
+                          [(ngModel)]="announcement.object"
                           name="governorate"
                         />
                       </div>
                     </div>
                     <div class="col-md-6 mb-4">
                       <div class="form-outline">
-                        <h5>Address</h5>
+                        <h5>Governorate</h5>
                         <input
                           type="text"
                           class="form-control"
-                          id="titleA"
-                          [(ngModel)]="announcement.address"
-                          name="address"
+                          id="loc"
+                          [(ngModel)]="announcement.governorate"
+                          name="object"
                         />
                       </div>
                     </div>
                   </div>
+                  <div class="row">
+                    <div class="col-md-6 mb-2">
+                      <div class="form-outline">
+                        <h5>Latitude</h5>
+                        <input
+                          type="text"
+                          class="form-control form-control-lg"
+                          id="form3Example1m"
+                          [(ngModel)]="lat"
+                          name="lat"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 mb-2">
+                      <div class="form-outline">
+                        <h5>Longitude</h5>
+                        <input
+                          type="text"
+                          class="form-control form-control-lg"
+                          id="form3Example1m"
+                          [(ngModel)]="lng"
+                          name="lng"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
                   <div class="row">
                     <div class="col-md-6 mb-4">
                       <div class="form-outline">
@@ -73,7 +101,17 @@
                       </div>
                     </div>
                   </div>
-
+                  <div class="form-outline">
+                    <h5>Address</h5>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="titleA"
+                      [(ngModel)]="announcement.address"
+                      name="address"
+                    />
+                  </div>
+                  <br />
                   <div class="form-group">
                     <h5>Description</h5>
                     <input
@@ -84,25 +122,29 @@
                       name="description"
                     />
                   </div>
+
                   <br />
-                  <div class="form-group">
-                    <h5>Article</h5>
-                    <textarea
-                      name="message"
-                      type="text"
-                      class="form-control"
-                      id="message"
-                      style="height: 100px"
-                      placeholder="write yout description"
-                      [(ngModel)]="announcement.articleAn"
-                    ></textarea>
-                  </div>
-                  <br />
-                  <div class="col-md-6 mb-4">
-                    <div class="form-group">
-                      <h5>Image</h5>
-                      <input type="file" (change)="upload($event)" />
-                    </div>
+
+                  <div class="col-lg-6 d-none d-xl-block">
+                    <h5>Image</h5>
+                    <ngx-dropzone
+                      [accept]="'image/png'"
+                      (change)="onSelect($event)"
+                      style="height: 100%"
+                    >
+                      <ngx-dropzone-label
+                        >Drop / select files</ngx-dropzone-label
+                      >
+                      <ngx-dropzone-preview
+                        *ngFor="let f of files"
+                        [removable]="true"
+                        (removed)="onRemove(f)"
+                      >
+                        <ngx-dropzone-label
+                          >{{ f.name }} ({{ f.type }})</ngx-dropzone-label
+                        >
+                      </ngx-dropzone-preview>
+                    </ngx-dropzone>
                   </div>
 
                   <div class="d-flex justify-content-end pt-3">
