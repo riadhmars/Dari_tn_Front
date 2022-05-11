@@ -16,7 +16,7 @@ import { ReserveComponent } from './page/reserve/reserve.component';
   declarations: [
     AppComponent,
     PageComponent,
-    ReserveComponent
+    ReserveComponent,
   ],
   imports: [
     BrowserModule,

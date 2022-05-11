@@ -60,7 +60,9 @@ export class ReserveComponent implements OnInit {
           }, 
           error => console.log(error));
         }
-            
+        reloadCurrentPage() {
+          window.location.reload();
+         }   
     }  
     
   
