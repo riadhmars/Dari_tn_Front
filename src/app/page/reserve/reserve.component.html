@@ -9,36 +9,36 @@
                     <div class="col-md-6">
                         <input type="text" class="form-control" 
                           placeholder="First Name"
-                          [(ngModel)]="vs.name"
+                          [(ngModel)]="Visite.name"
                           >
                     </div>
                     <div class="col-md-6">
                         <input type="text" class="form-control" placeholder="Last Name"               
-                                    [(ngModel)]="vs.last"
+                                    [(ngModel)]="Visite.last"
 
                           name="last">
                     </div>
                     <div class="col-md-6">
                         <input type="tel" class="form-control" placeholder="Phone Number"                
-                                   [(ngModel)]="vs.phone"
+                                   [(ngModel)]="Visite.phone"
 
                           name="phone">
                     </div>
                     <div class="col-md-6">
                         <input type="date" class="form-control" placeholder="Enter Date"
-                        [(ngModel)]="vs.date"
+                        [(ngModel)]="Visite.date"
 
                           name="date">
                     </div>
                     <div class="col-md-6">
                         <input type="time" class="form-control" placeholder="Enter Time" 
-                        [(ngModel)]="vs.time"
+                        [(ngModel)]="Visite.time"
 
                           name="time">
                     </div>
                     <div class="col-md-6">
                         <select class="form-select" placeholder="Chose an item"
-                        [(ngModel)]="vs.visitType"
+                        [(ngModel)]="Visite.visitType"
 
                           name="visitType">
                             <option value="Direct">Direct</option>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="col-12">
                         <select class="form-select" placeholder="Enter purpose"
-                        [(ngModel)]="vs.purpose"
+                        [(ngModel)]="Visite.purpose"
 
                           name="purpose">
                             <!-- <option selected>Purpose Of Appointment</option> -->
@@ -59,11 +59,11 @@
                     </div>
                     <div class="col-12">
                         <textarea class="form-control" placeholder="Message" 
-                        [(ngModel)]="vs.message"
+                        [(ngModel)]="Visite.message"
                           name="message"></textarea>
                     </div>
                     <div class="col-12 mt-5">                        
-                        <button type="submit" class="btn btn-primary float-end">Book Appointment</button>
+                        <button type="submit" (onClick)="newVisite()" class="btn btn-primary float-end">Book Appointment</button>
                         <button type="button" class="btn btn-outline-secondary float-end me-2">Cancel</button>
                     </div>
                 </div>

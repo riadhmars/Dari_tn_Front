@@ -13,8 +13,8 @@ export class VisiteService {
   constructor(private httpClient: HttpClient) {}
 
 
-   addVisite(visite: Visite): Observable<Object> {
-    return this.httpClient.post<Visite[]>(this.baseURL, visite);
+  createVisite(visite: Object): Observable<Object> {
+    return this.httpClient.post(`${this.baseURL}`, visite);
   }
 }
 
