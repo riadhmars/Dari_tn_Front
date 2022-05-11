@@ -86,10 +86,6 @@ export class CrudAnnouncementComponent implements OnInit {
   //Gets called when the user selects an image
 
   onSubmit() {
-    //const formData = new FormData();
-    //formData.append('file', this.uploadedImage);
-    //formData.append('file', this.post.get('img')?.value);
-    //console.log(this.announcement);
     this.announcementService
       .addAnnouncement(this.announcement)
       .subscribe(() => {
@@ -144,31 +140,6 @@ export class CrudAnnouncementComponent implements OnInit {
           console.log(position);
         }
       });
-    }
-  }
-  /////////////////////////
-  userFile: any;
-  public imagePath: any;
-  imgURL: any;
-  onSelectFile(event: any): void {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.userFile = file;
-      // this.f['profile'].setValue(file);
-
-      var mimeType = event.target.files[0].type;
-      if (mimeType.match(/image\/*/) == null) {
-        this.message = 'Only images are supported.';
-        return;
-      }
-
-      var reader = new FileReader();
-
-      this.imagePath = file;
-      reader.readAsDataURL(file);
-      reader.onload = (_event) => {
-        this.imgURL = reader.result;
-      };
     }
   }
 }
