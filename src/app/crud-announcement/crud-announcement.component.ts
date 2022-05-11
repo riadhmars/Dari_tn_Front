@@ -34,6 +34,8 @@ export class CrudAnnouncementComponent implements OnInit {
   ngOnInit(): void {
     //    this.fileInfos = this.annoucementService.getFiles(); /***************** */
     this.getAnnouncements();
+
+    this.get();
   }
   /////////////////
 
@@ -112,11 +114,21 @@ export class CrudAnnouncementComponent implements OnInit {
     console.log(event);
     this.files.push(...event.addedFiles);
 
-    const formData = new FormData();
+    let image65 = this.baseConvert(this.files[0]);
 
-    for (var i = 0; i < this.files.length; i++) {
-      formData.append('file[]', this.files[i]);
-    }
+    //convert base 64
+    //this.announcement.img = image65;
+  }
+
+  baseConvert(fichier: any) {
+    const reader = new FileReader();
+    reader.readAsDataURL(fichier);
+    reader.onload = () => {
+      console.log(reader.result);
+      this.announcement.img = reader.result;
+    };
+
+    //return reader.result;
   }
   onRemove(event: any) {
     console.log(event);
@@ -126,8 +138,8 @@ export class CrudAnnouncementComponent implements OnInit {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         if (position) {
-          this.lat = position.coords.latitude;
-          this.lng = position.coords.longitude;
+          this.announcement.lat = position.coords.latitude;
+          this.announcement.lng = position.coords.longitude;
 
           console.log(position);
         }

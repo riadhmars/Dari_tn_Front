@@ -11,4 +11,6 @@ export class Announcement {
   description!: string;
   img!: any;
   LikesNB!: number;
+  lng: any;
+  lat: any;
 }

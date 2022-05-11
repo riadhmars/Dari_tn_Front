@@ -1,74 +1,85 @@
-<p>announcement-details</p>
+<section class="h-100 bg-dark">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="card card-registration my-4">
+          <div class="row g-0">
+            <div class="col-xl-6 d-none d-xl-block">
+              <img
+                src="{{ announcement.img }}"
+                alt="Sample photo"
+                class="img-fluid"
+                style="
+                  border-top-left-radius: 0.25rem;
+                  border-bottom-left-radius: 0.25rem;
+                "
+              />
+            </div>
 
-<div>
-  <div>
-    <label>
-      <b>Object: </b>
-    </label>
-    {{ announcement.object }}
-  </div>
-  <div>
-    <label>
-      <b> Governorate : </b>
-    </label>
-    {{ announcement.governorate }}
-  </div>
-  <div>
-    <label>
-      <b> City : </b>
-    </label>
-    {{ announcement.city }}
-  </div>
-  <div>
-    <label>
-      <b> Address : </b>
-    </label>
-    {{ announcement.address }}
-  </div>
-  <div>
-    <label>
-      <b> Phone : </b>
-    </label>
-    {{ announcement.phone }}
-  </div>
-  <div>
-    <label>
-      <b> Price : </b>
-    </label>
-    {{ announcement.price }}
-  </div>
-  <div>
-    <label>
-      <b> Description : </b>
-    </label>
-    {{ announcement.description }}
-  </div>
-  <div>
-    <label>
-      <b> Date : </b>
-    </label>
-    {{ announcement.date }}
-  </div>
-  <div>
-    <label>
-      <b> Image : </b>
-    </label>
-    <img
-      style="max-height: 250px"
-      class="image"
-      src="data:image/png;base64,{{ announcement.img }}"
-    />
-  </div>
+            <div class="col-xl-6">
+              <div class="card-body p-md-5 text-black">
+                <h3 class="mb-5 text-uppercase" style="color: blue">
+                  Announcement details
+                </h3>
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <h2>Object:</h2>
+                      <h6>{{ announcement.object }}</h6>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <h2>Governorate</h2>
+                      <h6>{{ announcement.governorate }}</h6>
+                    </div>
+                  </div>
+                </div>
 
-  <div>
-    <label>
-      <b> Article: </b>
-    </label>
-    {{ announcement.articleAn }}
-  </div>
-</div>
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <h2>Phone</h2>
+                      <h6>{{ announcement.governorate }}</h6>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-group">
+                      <h2>Price</h2>
+                      <h6>{{ announcement.price }}</h6>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <h2>Address:</h2>
+                      <h6>{{ announcement.address }}</h6>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-4">
+                    <div class="form-group">
+                      <h2>Date:</h2>
+                      <h6>{{ announcement.date }}</h6>
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <div class="form-group">
+                  <h2>Description</h2>
+                  <h6>{{ announcement.description }}</h6>
+                </div>
+              </div>
 
-<!-- Call to Action Start -->
+              <!-- Call to Action Start -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Call to Action End -->
 <div class="container-xxl py-5">
   <div class="container">
     <div class="bg-light rounded p-3">
@@ -107,8 +118,6 @@
     </div>
   </div>
 </div>
-<!-- Call to Action End -->
-
 <!-- Contact Start -->
 <div class="container-xxl py-5">
   <div class="container">
