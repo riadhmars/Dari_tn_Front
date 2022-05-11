@@ -1,10 +1,16 @@
 import { NgModule } from '@angular/core';
+import {
+  HttpClient,
+  HttpClientModule,
+  HttpEventType,
+} from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PageComponent } from './page/page.component';
-import { ReserveComponent } from './reserve/reserve.component';
+import { ReserveComponent } from './page/reserve/reserve.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +20,10 @@ import { ReserveComponent } from './reserve/reserve.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+        
   ],
   providers: [],
   bootstrap: [AppComponent]
