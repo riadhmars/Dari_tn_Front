@@ -16,8 +16,7 @@ import { Visite } from 'src/app/visite';
   styleUrls: ['./reserve.component.css']
 })
 export class ReserveComponent implements OnInit {
-  // vss!: Visite[];
-  // vs: Visite = new Visite();
+
   Visite: Visite = new Visite();
   submitted = false;
 
@@ -33,31 +32,7 @@ export class ReserveComponent implements OnInit {
 
   }
 
-  // visiteNew(form: NgForm) {
-
-  //   let ff = form.value;
-
-  //   console.log(ff);
-
-  //   this.visiteService.createVisite(ff).subscribe(
-  //     (data) => {
-
-
-  //       console.log(data);
-        
-  //     },
-  //     (error) => console.log(error)
-  //   );
-  // }
-
-  // onSubmit() {
-   
-  //   this.visiteService.createVisite(this.vs)
-  //     .subscribe(() => {
-  //     });
-  // }
-  // Persist(){
-
+  
     newVisite(): void {
       this.submitted = false;
       this.Visite = new Visite();
@@ -76,7 +51,19 @@ export class ReserveComponent implements OnInit {
       this.submitted = true;
       this.save();    
     }
+    deleteVisite(visite: object) {  
+      this.visiteService.deleteVisite(visite)  
+        .subscribe(  
+          data => {  
+            console.log(data);  
+            this.Visite = new Visite();
+          }, 
+          error => console.log(error));
+        }
+            
+    }  
+    
   
 
-  }
+  
 

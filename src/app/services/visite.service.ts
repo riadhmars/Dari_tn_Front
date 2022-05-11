@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, ɵAPP_ID_RANDOM_PROVIDER } from '@angular/core';
 //import { HttpClient } from '@angular/common/http';
 import { HttpClient, HttpRequest, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -16,5 +16,8 @@ export class VisiteService {
   createVisite(visite: Object): Observable<Object> {
     return this.httpClient.post(`${this.baseURL}`, visite);
   }
+  deleteVisite(visite: Object): Observable<Object> {  
+    return this.httpClient.delete(`${this.baseURL}/delete-visite/${ɵAPP_ID_RANDOM_PROVIDER}`, { responseType: 'text' });  
+  }  
 }
 
